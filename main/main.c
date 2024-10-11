@@ -3,10 +3,7 @@
 #include <inttypes.h>
 #include <string.h>
 #include <stdio.h>
-//#include "nvs.h"
 #include "nvs_flash.h"
-//#include "freertos/FreeRTOS.h"
-//#include "freertos/task.h"
 #include "esp_log.h"
 #include "esp_bt.h"
 #include "esp_bt_main.h"
@@ -14,9 +11,9 @@
 #include "esp_bt_device.h"
 #include "esp_spp_api.h"
  
-#define SPP_TAG "SPP_ACCEPTOR_DEMO"
-#define SPP_SERVER_NAME "SPP_SERVER"
-#define EXAMPLE_DEVICE_NAME "ESP_SPP_ACCEPTOR"
+#define SPP_TAG "HERMES"
+#define SPP_SERVER_NAME "hermes"
+#define EXAMPLE_DEVICE_NAME "hermes"
  
 static bool bWriteAfterOpenEvt = true;
 static bool bWriteAfterWriteEvt = false;
@@ -33,24 +30,20 @@ static const esp_spp_role_t role_slave = ESP_SPP_ROLE_SLAVE;
 #define SPP_DATA_LEN 20
 static uint8_t spp_data[SPP_DATA_LEN];
  
-uint8_t *createTestBuffer(void)
-{
-	static const uint8_t buffer[] = { 5, 7, 3, 4, 9, 1, 3 };
-	uint8_t *rv = malloc(sizeof(buffer));
-	if (rv != 0)
-		memmove(rv, buffer, sizeof(buffer));
-	return rv;
-}
- 
+
+
 static char charArrayLastReceivedData[18];
+
+
+struct data_buffer
+{
+	int size;
+	char * buffie
+}
+
  
-static void saveReceivedData(int len, uint8_t *p_data){
-	//
-	char array1[18] = "abcdefg";
-	char array2[18];
-	strncpy(array2, array1, 18);
-   
-	//Better: strncpy_s();
+static void saveReceivedData(int len, uint8_t *p_data)
+{
  
 	strncpy(charArrayLastReceivedData, array1, 18);
  
